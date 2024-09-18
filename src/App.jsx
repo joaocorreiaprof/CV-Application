@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.jsx
+import { useState } from "react";
+import { GeneralInfo } from "./components/generalInfo";
+import "./app.css";
+import Accordion from "./components/educationAndExperience";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // State for personal details
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="main-content">
+      <div className="user-forms">
+        <GeneralInfo
+          firstName={firstName}
+          setFirstName={setFirstName}
+          lastName={lastName}
+          setLastName={setLastName}
+          email={email}
+          setEmail={setEmail}
+          phoneNumber={phoneNumber}
+          setPhoneNumber={setPhoneNumber}
+          address={address}
+          setAddress={setAddress}
+        />
+        <Accordion />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="cv-display">
+        <div className="cv-header">
+          <div className="user-first-name">First Name: {firstName}</div>
+          <div className="user-last-name">Last Name: {lastName}</div>
+          <div className="user-email">Email: {email}</div>
+          <div className="user-number">Phone Number: {phoneNumber}</div>
+          <div className="user-address">Address: {address}</div>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export { App };

@@ -1,0 +1,17 @@
+.main-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-forms {
+  width: 50vw;
+}
+
+.cv-display {
+  background-color: rgb(210, 210, 218);
+  width: 50vw;
+}
+
+.cv-header {
+  background-color: gray;
+}
