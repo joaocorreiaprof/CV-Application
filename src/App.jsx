@@ -5,12 +5,16 @@ import "./app.css";
 import Accordion from "./components/educationAndExperience";
 
 function App() {
-  // State for personal details
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [experiences, setExperiences] = useState([]);
+
+  const addExperience = (newExperience) => {
+    setExperiences([...experiences, newExperience]);
+  };
 
   return (
     <div className="main-content">
@@ -27,7 +31,7 @@ function App() {
           address={address}
           setAddress={setAddress}
         />
-        <Accordion />
+        <Accordion addExperience={addExperience} />
       </div>
       <div className="cv-display">
         <div className="cv-header">
@@ -36,6 +40,17 @@ function App() {
           <div className="user-email">Email: {email}</div>
           <div className="user-number">Phone Number: {phoneNumber}</div>
           <div className="user-address">Address: {address}</div>
+        </div>
+        <div className="cv-education">
+          {experiences.map((experience, index) => (
+            <div key={index} className="cv-experience">
+              <div className="cv-school">{experience.school}</div>
+              <div className="cv-degree">{experience.degree}</div>
+              <div className="cv-start-date">{experience.startDate}</div>
+              <div className="cv-end-date">{experience.endDate}</div>
+              <div className="cv-location">{experience.location}</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

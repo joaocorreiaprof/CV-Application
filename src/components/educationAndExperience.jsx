@@ -14,46 +14,103 @@ function Panel({ title, children }) {
   );
 }
 
-function ButtonWithForm({ popForm, setPopForm }) {
+function ButtonWithForm({ popForm, setPopForm, addExperience }) {
+  const [school, setSchool] = useState("");
+  const [degree, setDegree] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [location, setLocation] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Add the new experience to the list
+    addExperience({
+      school,
+      degree,
+      startDate,
+      endDate,
+      location,
+    });
+
+    // Reset the form and close it
+    setSchool("");
+    setDegree("");
+    setStartDate("");
+    setEndDate("");
+    setLocation("");
+    setPopForm(false);
+  };
+
   return (
     <div>
       <button onClick={() => setPopForm(true)}>+ Experience</button>
       {popForm && (
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>
             School
-            <input type="text" placeholder="Enter school / university" />
+            <input
+              type="text"
+              placeholder="Enter school / university"
+              value={school}
+              onChange={(event) => setSchool(event.target.value)}
+            />
           </label>
           <label>
             Degree
-            <input type="text" placeholder="Enter degree / field of study" />
+            <input
+              type="text"
+              placeholder="Enter degree / field of study"
+              value={degree}
+              onChange={(event) => setDegree(event.target.value)}
+            />
           </label>
           <label>
             Start Date
-            <input type="date" placeholder="Enter start date" />
+            <input
+              type="date"
+              placeholder="Enter start date"
+              value={startDate}
+              onChange={(event) => setStartDate(event.target.value)}
+            />
           </label>
           <label>
             End Date
-            <input type="date" placeholder="Enter end date" />
+            <input
+              type="date"
+              placeholder="Enter end date"
+              value={endDate}
+              onChange={(event) => setEndDate(event.target.value)}
+            />
           </label>
           <label>
             Location
-            <input type="text" placeholder="Enter location" />
+            <input
+              type="text"
+              placeholder="Enter location"
+              value={location}
+              onChange={(event) => setLocation(event.target.value)}
+            />
           </label>
+          <button type="submit">Add Experience</button>
         </form>
       )}
     </div>
   );
 }
 
-export default function Accordion() {
-  const [popForm, setPopForm] = useState(false); // Lifted state
+export default function Accordion({ addExperience }) {
+  const [popForm, setPopForm] = useState(false);
 
   return (
     <>
       <h2>Education</h2>
       <Panel title="About">
-        <ButtonWithForm popForm={popForm} setPopForm={setPopForm} />
+        <ButtonWithForm
+          popForm={popForm}
+          setPopForm={setPopForm}
+          addExperience={addExperience}
+        />
       </Panel>
     </>
   );
