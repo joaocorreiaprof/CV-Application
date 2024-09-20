@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { GeneralInfo } from "./components/generalInfo";
 import "./app.css";
-import Accordion from "./components/educationAndExperience";
+import { Accordion } from "./components/Education";
+import { Experience } from "./components/Experience";
 
 function App() {
   const [firstName, setFirstName] = useState("");
@@ -10,7 +11,12 @@ function App() {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [educations, setEducations] = useState([]);
   const [experiences, setExperiences] = useState([]);
+
+  const addEducation = (newEducation) => {
+    setEducations([...educations, newEducation]);
+  };
 
   const addExperience = (newExperience) => {
     setExperiences([...experiences, newExperience]);
@@ -31,7 +37,8 @@ function App() {
           address={address}
           setAddress={setAddress}
         />
-        <Accordion addExperience={addExperience} />
+        <Accordion addEducation={addEducation} />
+        <Experience addExperience={addExperience} />
       </div>
       <div className="cv-display">
         <div className="cv-header">
@@ -42,13 +49,25 @@ function App() {
           <div className="user-address">Address: {address}</div>
         </div>
         <div className="cv-education">
+          {educations.map((education, index) => (
+            <div key={index} className="cv-education">
+              <div className="cv-school">{education.school}</div>
+              <div className="cv-degree">{education.degree}</div>
+              <div className="cv-start-date">{education.startDate}</div>
+              <div className="cv-end-date">{education.endDate}</div>
+              <div className="cv-location">{education.location}</div>
+            </div>
+          ))}
+        </div>
+        <div className="cv-experience">
           {experiences.map((experience, index) => (
             <div key={index} className="cv-experience">
-              <div className="cv-school">{experience.school}</div>
-              <div className="cv-degree">{experience.degree}</div>
+              <div className="cv-s">{experience.companyName}</div>
+              <div className="cv-degree">{experience.positionTitle}</div>
               <div className="cv-start-date">{experience.startDate}</div>
               <div className="cv-end-date">{experience.endDate}</div>
               <div className="cv-location">{experience.location}</div>
+              <div className="cv-description">{experience.description}</div>
             </div>
           ))}
         </div>

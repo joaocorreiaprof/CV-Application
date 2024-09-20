@@ -14,7 +14,7 @@ function Panel({ title, children }) {
   );
 }
 
-function ButtonWithForm({ popForm, setPopForm, addExperience }) {
+function ButtonWithForm({ popForm, setPopForm, addEducation }) {
   const [school, setSchool] = useState("");
   const [degree, setDegree] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -24,8 +24,7 @@ function ButtonWithForm({ popForm, setPopForm, addExperience }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Add the new experience to the list
-    addExperience({
+    addEducation({
       school,
       degree,
       startDate,
@@ -33,7 +32,6 @@ function ButtonWithForm({ popForm, setPopForm, addExperience }) {
       location,
     });
 
-    // Reset the form and close it
     setSchool("");
     setDegree("");
     setStartDate("");
@@ -92,14 +90,14 @@ function ButtonWithForm({ popForm, setPopForm, addExperience }) {
               onChange={(event) => setLocation(event.target.value)}
             />
           </label>
-          <button type="submit">Add Experience</button>
+          <button type="submit">Add Education</button>
         </form>
       )}
     </div>
   );
 }
 
-export default function Accordion({ addExperience }) {
+function Accordion({ addEducation }) {
   const [popForm, setPopForm] = useState(false);
 
   return (
@@ -109,9 +107,11 @@ export default function Accordion({ addExperience }) {
         <ButtonWithForm
           popForm={popForm}
           setPopForm={setPopForm}
-          addExperience={addExperience}
+          addEducation={addEducation}
         />
       </Panel>
     </>
   );
 }
+
+export { Accordion, Panel };
