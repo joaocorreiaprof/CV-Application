@@ -4,6 +4,9 @@ import { GeneralInfo } from "./components/generalInfo";
 import "./app.css";
 import { Accordion } from "./components/Education";
 import { Experience } from "./components/Experience";
+import { MdEmail } from "react-icons/md";
+import { FaPhone } from "react-icons/fa6";
+import { IoLocationSharp } from "react-icons/io5";
 
 function App() {
   const [firstName, setFirstName] = useState("");
@@ -42,32 +45,69 @@ function App() {
       </div>
       <div className="cv-display">
         <div className="cv-header">
-          <div className="user-first-name">First Name: {firstName}</div>
-          <div className="user-last-name">Last Name: {lastName}</div>
-          <div className="user-email">Email: {email}</div>
-          <div className="user-number">Phone Number: {phoneNumber}</div>
-          <div className="user-address">Address: {address}</div>
+          <div className="user-name">
+            <div className="user-first-name">{firstName}</div>
+            <div className="user-last-name"> {lastName}</div>
+          </div>
+          <div className="user-information">
+            <div className="div-email">
+              <MdEmail style={{ fontSize: "18px", color: "white" }} />
+              <div className="user-email">{email}</div>
+            </div>
+            <div className="div-number">
+              <FaPhone style={{ fontSize: "18px", color: "white" }} />
+              <div className="user-number">{phoneNumber}</div>
+            </div>
+            <div className="div-address">
+              <IoLocationSharp style={{ fontSize: "18px", color: "white" }} />
+              <div className="user-address">{address}</div>
+            </div>
+          </div>
         </div>
         <div className="cv-education">
+          <div className="title-education">
+            <h3 className="education">Education</h3>
+          </div>
           {educations.map((education, index) => (
-            <div key={index} className="cv-education">
-              <div className="cv-school">{education.school}</div>
-              <div className="cv-degree">{education.degree}</div>
-              <div className="cv-start-date">{education.startDate}</div>
-              <div className="cv-end-date">{education.endDate}</div>
-              <div className="cv-location">{education.location}</div>
+            <div key={index}>
+              <div className="education-content">
+                <div>
+                  <div className="cv-date">
+                    {education.startDate} - {education.endDate}
+                  </div>
+                  <div className="cv-location">{education.location}</div>
+                </div>
+                <div className="school-degree">
+                  <div className="cv-school">{education.school}</div>
+                  <div className="cv-degree">{education.degree}</div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
         <div className="cv-experience">
+          <div className="title-experience">
+            <h3 className="experience">Professional Experience</h3>
+          </div>
           {experiences.map((experience, index) => (
-            <div key={index} className="cv-experience">
-              <div className="cv-s">{experience.companyName}</div>
-              <div className="cv-degree">{experience.positionTitle}</div>
-              <div className="cv-start-date">{experience.startDate}</div>
-              <div className="cv-end-date">{experience.endDate}</div>
-              <div className="cv-location">{experience.location}</div>
-              <div className="cv-description">{experience.description}</div>
+            <div key={index}>
+              <div className="experience-content">
+                <div>
+                  <div className="cv-date">
+                    {experience.startDate} - {experience.endDate}{" "}
+                  </div>
+                  <div className="cv-location">{experience.location}</div>
+                </div>
+                <div className="company-position-description">
+                  <div className="cv-company-name">
+                    {experience.companyName}
+                  </div>
+                  <div className="cv-position-title">
+                    {experience.positionTitle}
+                  </div>
+                  <div className="cv-desctiption">{experience.description}</div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  background-color: rgb(243, 243, 243);
+}
+
 .main-content {
   display: flex;
   flex-direction: row;
@@ -8,10 +20,95 @@
 }
 
 .cv-display {
-  background-color: rgb(210, 210, 218);
   width: 50vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 .cv-header {
-  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #263b55;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: white;
+  height: 10%;
+}
+
+.div-email,
+.div-number,
+.div-address {
+  display: flex;
+  gap: 5px;
+}
+
+.user-name {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+}
+
+.user-first-name {
+  margin-right: 5px;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.user-last-name {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.user-information {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+/*CV-Education*/
+
+.cv-education,
+.cv-experience {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.title-education,
+.title-experience {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: #263b55;
+  background-color: rgb(243, 243, 243);
+}
+
+.education,
+.experience {
+  text-align: center;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-size: 1.4rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.education-content,
+.experience-content {
+  display: flex;
+  gap: 50px;
+}
+
+.school-degree,
+.cv-desctiption {
+  margin-bottom: 2rem;
+}
+
+.cv-school,
+.cv-company-name {
+  font-weight: 900;
+}
+
+.cv-school,
+.cv-date,
+.cv-company-name,
+.cv-position-title {
+  margin-bottom: 3px;
 }

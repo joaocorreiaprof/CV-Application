@@ -55,7 +55,7 @@ function ButtonWithExperienceForm({ popForm, setPopForm, addExperience }) {
           <label>
             Start Date
             <input
-              type="date"
+              type="text"
               placeholder="Enter start date"
               value={startDate}
               onChange={(event) => setStartDate(event.target.value)}
@@ -64,7 +64,7 @@ function ButtonWithExperienceForm({ popForm, setPopForm, addExperience }) {
           <label>
             End Date
             <input
-              type="date"
+              type="text"
               placeholder="Enter end date"
               value={endDate}
               onChange={(event) => setEndDate(event.target.value)}
