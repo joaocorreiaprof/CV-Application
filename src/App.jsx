@@ -1,12 +1,13 @@
-// App.jsx
 import { useState } from "react";
 import { GeneralInfo } from "./components/generalInfo";
 import "./app.css";
-import { Accordion } from "./components/Education";
+import { Accordion as EducationAccordion } from "./components/Education";
 import { Experience } from "./components/Experience";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
+import { SlArrowDown } from "react-icons/sl";
+import { SlArrowUp } from "react-icons/sl";
 
 function App() {
   const [firstName, setFirstName] = useState("");
@@ -16,6 +17,8 @@ function App() {
   const [address, setAddress] = useState("");
   const [educations, setEducations] = useState([]);
   const [experiences, setExperiences] = useState([]);
+  const [showEducationForm, setShowEducationForm] = useState(false);
+  const [showExperienceForm, setShowExperienceForm] = useState(false);
 
   const addEducation = (newEducation) => {
     setEducations([...educations, newEducation]);
@@ -40,9 +43,41 @@ function App() {
           address={address}
           setAddress={setAddress}
         />
-        <Accordion addEducation={addEducation} />
-        <Experience addExperience={addExperience} />
+
+        {/* Buttons to toggle forms */}
+        <button onClick={() => setShowEducationForm(!showEducationForm)}>
+          {showEducationForm ? (
+            <>
+              Education <SlArrowUp />
+            </>
+          ) : (
+            <>
+              Education <SlArrowDown />
+            </>
+          )}
+        </button>
+
+        <button onClick={() => setShowExperienceForm(!showExperienceForm)}>
+          {showExperienceForm ? (
+            <>
+              Experience <SlArrowUp />
+            </>
+          ) : (
+            <>
+              Experience <SlArrowDown />
+            </>
+          )}
+        </button>
+
+        {/* Conditional rendering for Education Form */}
+        {showEducationForm && (
+          <EducationAccordion addEducation={addEducation} />
+        )}
+
+        {/* Conditional rendering for Experience Form */}
+        {showExperienceForm && <Experience addExperience={addExperience} />}
       </div>
+
       <div className="cv-display">
         <div className="cv-header">
           <div className="user-name">
@@ -64,6 +99,7 @@ function App() {
             </div>
           </div>
         </div>
+
         <div className="cv-education">
           <div className="title-education">
             <h3 className="education">Education</h3>
@@ -85,6 +121,7 @@ function App() {
             </div>
           ))}
         </div>
+
         <div className="cv-experience">
           <div className="title-experience">
             <h3 className="experience">Professional Experience</h3>
@@ -94,7 +131,7 @@ function App() {
               <div className="experience-content">
                 <div>
                   <div className="cv-date">
-                    {experience.startDate} - {experience.endDate}{" "}
+                    {experience.startDate} - {experience.endDate}
                   </div>
                   <div className="cv-location">{experience.location}</div>
                 </div>
@@ -105,7 +142,7 @@ function App() {
                   <div className="cv-position-title">
                     {experience.positionTitle}
                   </div>
-                  <div className="cv-desctiption">{experience.description}</div>
+                  <div className="cv-description">{experience.description}</div>
                 </div>
               </div>
             </div>

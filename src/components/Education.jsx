@@ -1,18 +1,5 @@
+// Education.jsx
 import { useState } from "react";
-
-function Panel({ title, children }) {
-  const [isActive, setIsActive] = useState(false);
-
-  return (
-    <section className="panel">
-      <h3>{title}</h3>
-      {isActive && children}
-      <button onClick={() => setIsActive(!isActive)}>
-        {isActive ? "Hide" : "Show"}
-      </button>
-    </section>
-  );
-}
 
 function ButtonWithForm({ popForm, setPopForm, addEducation }) {
   const [school, setSchool] = useState("");
@@ -23,15 +10,9 @@ function ButtonWithForm({ popForm, setPopForm, addEducation }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    addEducation({ school, degree, startDate, endDate, location });
 
-    addEducation({
-      school,
-      degree,
-      startDate,
-      endDate,
-      location,
-    });
-
+    // Reset form fields
     setSchool("");
     setDegree("");
     setStartDate("");
@@ -42,7 +23,7 @@ function ButtonWithForm({ popForm, setPopForm, addEducation }) {
 
   return (
     <div>
-      <button onClick={() => setPopForm(true)}>+ Experience</button>
+      <button onClick={() => setPopForm(true)}>+ Education</button>
       {popForm && (
         <form onSubmit={handleSubmit}>
           <label>
@@ -101,17 +82,12 @@ function Accordion({ addEducation }) {
   const [popForm, setPopForm] = useState(false);
 
   return (
-    <>
-      <h2>Education</h2>
-      <Panel title="About">
-        <ButtonWithForm
-          popForm={popForm}
-          setPopForm={setPopForm}
-          addEducation={addEducation}
-        />
-      </Panel>
-    </>
+    <ButtonWithForm
+      popForm={popForm}
+      setPopForm={setPopForm}
+      addEducation={addEducation}
+    />
   );
 }
 
-export { Accordion, Panel };
+export { Accordion };

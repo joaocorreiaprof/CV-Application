@@ -13,14 +13,18 @@ body {
 .main-content {
   display: flex;
   flex-direction: row;
+  padding: 1%;
 }
 
 .user-forms {
   width: 50vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .cv-display {
   width: 50vw;
+  height: 100vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: white;
 }
