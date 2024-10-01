@@ -1,8 +1,20 @@
-# React + Vite
+# CV Application - React Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live
 
-Currently, two official plugins are available:
+https://cv-aplication-top.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction
+
+This project is part of the React course curriculum where the objective is to create a small CV generator using React. It allows users to input their personal, educational, and practical experience details, and view the generated CV in real-time. Users can also edit their information and resubmit it.
+
+## Features
+
+- **General Information Section**: Collects name, email, and phone number.
+- **Educational Experience Section**: Collects details like school name, title of study, and study dates.
+- **Practical Experience Section**: Collects company name, job title, main responsibilities, and employment duration.
+- **State Management**: Heavy use of state and props to manage form inputs and their display.
+
+## License
+
+This project is licensed under the MIT License
