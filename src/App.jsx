@@ -45,7 +45,10 @@ function App() {
         />
 
         {/* Buttons to toggle forms */}
-        <button onClick={() => setShowEducationForm(!showEducationForm)}>
+        <button
+          className="education-button"
+          onClick={() => setShowEducationForm(!showEducationForm)}
+        >
           {showEducationForm ? (
             <>
               Education <SlArrowUp />
@@ -57,7 +60,10 @@ function App() {
           )}
         </button>
 
-        <button onClick={() => setShowExperienceForm(!showExperienceForm)}>
+        <button
+          className="experience-button"
+          onClick={() => setShowExperienceForm(!showExperienceForm)}
+        >
           {showExperienceForm ? (
             <>
               Experience <SlArrowUp />

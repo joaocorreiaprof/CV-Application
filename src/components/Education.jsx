@@ -7,6 +7,23 @@ function ButtonWithForm({ popForm, setPopForm, addEducation }) {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [location, setLocation] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
+  const buttonStyle = {
+    background: isHovered ? "#557377" : "#6f898f",
+    color: "#fff",
+    padding: "10px 20px",
+    fontSize: "15px",
+    fontWeight: "600",
+    border: "none",
+    borderRadius: "25px",
+    cursor: "pointer",
+    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+    transition: "transform 0.25s ease, background 0.3s ease",
+    width: "97%",
+    marginTop: "12px",
+    marginBottom: "10px",
+    transform: isHovered ? "scale(1.05)" : "scale(1)",
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,7 +40,14 @@ function ButtonWithForm({ popForm, setPopForm, addEducation }) {
 
   return (
     <div>
-      <button onClick={() => setPopForm(true)}>+ Education</button>
+      <button
+        style={buttonStyle}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={() => setPopForm(true)}
+      >
+        + Education
+      </button>
       {popForm && (
         <form onSubmit={handleSubmit}>
           <label>
